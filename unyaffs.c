@@ -203,9 +203,11 @@ static int mkdirpath(const char *name, mode_t mode) {
 	}
 	free(buf);
 
-	if (mkdir(name, mode) < 0 &&
-	    (stat(name, &st) < 0 || !S_ISDIR(st.st_mode)))
-		return -1;
+	if (mkdir(name, mode) < 0) {
+		if (stat(name, &st) < 0 || !S_ISDIR(st.st_mode))
+			return -1;
+		chmod(name, mode);
+	}
 
 	return 0;
 }
