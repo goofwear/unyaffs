@@ -50,17 +50,20 @@
 #define HAS_LUTIMES 1
 #endif
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include <stdio.h>
-#include <string.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdarg.h>
+#include <string.h>
 #include <time.h>
 #include <errno.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#if defined(__linux__) || defined(__GLIBC__)
+#include <sys/sysmacros.h>
+#endif
 #ifdef HAS_LUTIMES
 #include <sys/time.h>
 #else
