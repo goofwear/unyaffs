@@ -41,9 +41,12 @@
  *   Bug in verifying the -s (spare) parameter
  * V0.9.6  2013-04-09
  *   Added man page
+ * V0.9.7  2018-03-29
+ *   Directory creation doesn't fail, if it already exists
+ *   Fix compiler warnings for newer GCC
  */
 
-#define VERSION		"0.9.6"
+#define VERSION		"0.9.7"
 
 /* check if lutimes is available */
 #if defined(__linux__) || defined(__FreeBSD__) || defined(__NetBSD__) || (defined(__APPLE__) && defined(__MACH__))
